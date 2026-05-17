@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARSTOPUP - Layanan Game Sultan</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { background-color: #050811; }
+        .star-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: -10px;
+        }
+        .main-star {
+            font-size: 150px;
+            color: #fbbf24;
+            filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.6));
+            animation: pulse 2s infinite ease-in-out;
+        }
+        .logo-text {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Arial Black', sans-serif;
+            font-weight: 900;
+            color: #050811;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: -0.5px;
+            text-align: center;
+            width: 100px;
+            line-height: 1;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.4)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(251, 191, 36, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.4)); }
+        }
+        .active-card { border-color: #fbbf24 !important; background: rgba(251, 191, 36, 0.1) !important; }
+        .diamond-card:hover { transform: translateY(-3px); }
+    </style>
+</head>
+<body class="text-slate-200 p-4 antialiased">
+
+<div class="max-w-md mx-auto">
+    <div class="star-container">
+        <i class="fa-solid fa-star main-star"></i>
+        <div class="logo-text">STARS<br>TOPUP</div>
+    </div>
+
+    <div class="bg-[#111827] p-6 rounded-3xl shadow-2xl border border-slate-800 relative z-10">
+        <div class="text-center mb-6">
+            <h1 class="text-xl font-black text-amber-400 tracking-tighter uppercase italic">Starstopup Official</h1>
+            <p class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Premium Game Topup Service</p>
+        </div>
+
+        <div class="bg-[#050811] p-4 rounded-2xl mb-4 border border-slate-800">
+            <div class="flex items-center gap-2 mb-3 text-xs font-black text-amber-400 uppercase tracking-widest">
+                <i class="fa-solid fa-user-gear"></i> Masukkan ID Player
+            </div>
+            <input type="number" id="user-id" placeholder="Masukkan Player ID Kamu" class="w-full p-4 bg-[#111827] border border-slate-700 text-white rounded-xl focus:outline-none focus:border-amber-400 font-bold transition-all">
+        </div>
+
+        <div class="bg-[#050811] p-4 rounded-2xl mb-4 border border-slate-800">
+            <div class="flex items-center gap-2 mb-3 text-xs font-black text-amber-400 uppercase tracking-widest">
+                <i class="fa-solid fa-gem"></i> Pilih Diamond + Bonus
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="diamond-card bg-[#111827] p-3 border border-slate-700 rounded-xl text-center cursor-pointer relative transition-all duration-200" onclick="selectDiamond(this, '5 Diamond (+1 Bonus)', 'Rp 1.000')">
+                    <span class="absolute top-0 right-0 bg-amber-500 text-[8px] font-black text-black px-1.5 py-0.5 rounded-bl-lg rounded-tr-xl">BNS</span>
+                    <div class="text-xs font-black">5 Dm</div>
+                    <div class="text-[10px] text-amber-400 font-bold mt-0.5">Rp 1.000</div>
+                </div>
+                <div class="diamond-card bg-[#111827] p-3 border border-slate-700 rounded-xl text-center cursor-pointer relative transition-all duration-200" onclick="selectDiamond(this, '12 Diamond (+2 Bonus)', 'Rp 2.000')">
+                    <span class="absolute top-0 right-0 bg-amber-500 text-[8px] font-black text-black px-1.5 py-0.5 rounded-bl-lg rounded-tr-xl">BNS</span>
+                    <div class="text-xs font-black">12 Dm</div>
+                    <div class="text-[10px] text-amber-400 font-bold mt-0.5">Rp 2.000</div>
+                </div>
+                <div class="diamond-card bg-[#111827] p-3 border border-slate-700 rounded-xl text-center cursor-pointer relative transition-all duration-200" onclick="selectDiamond(this, '50 Diamond (+5 Bonus)', 'Rp 8.000')">
+                    <span class="absolute top-0 right-0 bg-amber-500 text-[8px] font-black text-black px-1.5 py-0.5 rounded-bl-lg rounded-tr-xl">BNS</span>
+                    <div class="text-xs font-black">50 Dm</div>
+                    <div class="text-[10px] text-amber-400 font-bold mt-0.5">Rp 8.000</div>
+                </div>
+                <div class="diamond-card bg-[#111827] p-3 border border-slate-700 rounded-xl text-center cursor-pointer relative transition-all duration-200" onclick="selectDiamond(this, '70 Diamond (+7 Bonus)', 'Rp 10.000')">
+                    <span class="absolute top-0 right-0 bg-amber-500 text-[8px] font-black text-black px-1.5 py-0.5 rounded-bl-lg rounded-tr-xl">BNS</span>
+                    <div class="text-xs font-black">70 Dm</div>
+                    <div class="text-[10px] text-amber-400 font-bold mt-0.5">Rp 10.000</div>
+                </div>
+                <div class="diamond-card bg-[#111827] p-3 border border-slate-700 rounded-xl text-center cursor-pointer relative transition-all duration-200" onclick="selectDiamond(this, '355 Diamond (+40 Bonus)', 'Rp 50.000')">
+                    <span class="absolute top-0 right-0 bg-amber-500 text-[8px] font-black text-black px-1.5 py-0.5 rounded-bl-lg rounded-tr-xl">BNS</span>
+                    <div class="text-xs font-black">355 Dm</div>
+                    <div class="text-[10px] text-amber-400 font-bold mt-0.5">Rp 50.000</div>
+                </div>
+                <div class="diamond-card bg-[#111827] p-3 border border-slate-700 rounded-xl text-center cursor-pointer relative transition-all duration-200" onclick="selectDiamond(this, '3640 Diamond (+460 Bonus)', 'Rp 500.000')">
+                    <span class="absolute top-0 right-0 bg-amber-500 text-[8px] font-black text-black px-1.5 py-0.5 rounded-bl-lg rounded-tr-xl">BNS</span>
+                    <div class="text-xs font-black">3640 Dm</div>
+                    <div class="text-[10px] text-amber-400 font-bold mt-0.5">Rp 500.000</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-[#050811] p-4 rounded-2xl mb-6 border border-slate-800">
+            <div class="flex items-center gap-2 mb-3 text-xs font-black text-amber-400 uppercase tracking-widest">
+                <i class="fa-solid fa-credit-card"></i> Pilih Metode Bayar
+            </div>
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between p-3 bg-[#111827] border border-slate-700 rounded-xl cursor-pointer transition-all" onclick="selectPayment(this, 'QRIS (All Payment)')">
+                    <div class="flex items-center gap-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/QRIS_logo.svg" alt="QRIS" class="h-4 bg-white p-0.5 rounded">
+                        <span class="text-[11px] font-bold">QRIS (SCAN)</span>
+                    </div>
+                    <i class="fa-solid fa-circle-check text-slate-700"></i>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-[#111827] border border-slate-700 rounded-xl cursor-pointer transition-all" onclick="selectPayment(this, 'DANA')">
+                    <div class="flex items-center gap-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA" class="h-4">
+                        <span class="text-[11px] font-bold">DANA APP</span>
+                    </div>
+                    <i class="fa-solid fa-circle-check text-slate-700"></i>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-[#111827] border border-slate-700 rounded-xl cursor-pointer transition-all" onclick="selectPayment(this, 'OVO')">
+                    <div class="flex items-center gap-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg" alt="OVO" class="h-4">
+                        <span class="text-[11px] font-bold">OVO CASH</span>
+                    </div>
+                    <i class="fa-solid fa-circle-check text-slate-700"></i>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="kirimWhatsApp()" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-black p-4 rounded-2xl font-black shadow-lg shadow-amber-900/20 transition-all transform active:scale-95 cursor-pointer text-sm tracking-widest uppercase italic">
+            🔥 Checkout Sekarang
+        </button>
+    </div>
+    
+    <p class="text-center text-[9px] text-slate-500 mt-6 font-bold uppercase tracking-widest">Powered by Starstopup Indonesia</p>
+</div>
+
+<script>
+    let selectedDiamond = ''; let selectedPrice = ''; let selectedPayment = '';
+
+    function selectDiamond(element, name, price) {
+        document.querySelectorAll('.diamond-card').forEach(el => el.classList.remove('active-card'));
+        element.classList.add('active-card');
+        selectedDiamond = name; selectedPrice = price;
+    }
+
+    function selectPayment(element, method) {
+        document.querySelectorAll('.flex.flex-col > div').forEach(el => {
+            el.classList.remove('active-card');
+            el.querySelector('i').classList.replace('text-amber-400', 'text-slate-700');
+        });
+        element.classList.add('active-card');
+        element.querySelector('i').classList.replace('text-slate-700', 'text-amber-400');
+        selectedPayment = method;
+    }
+
+    function kirimWhatsApp() {
+        let userId = document.getElementById('user-id').value;
+        if (!userId || !selectedDiamond || !selectedPayment) {
+            alert('⚠️ Harap lengkapi semua data sebelum checkout!'); return;
+        }
+        let nomorAdmin = "6285810147821";
+        let teksPesan = "Halo Admin STARSTOPUP 🌟%0A%0ASaya mau pesan diamond sultan dengan rincian:%0A" +
+                        "━━━━━━━━━━━━━━━━━━%0A" +
+                        "🆔 *Player ID:* " + userId + "%0A" +
+                        "💎 *Paket:* " + selectedDiamond + "%0A" +
+                        "💰 *Total Bayar:* " + selectedPrice + "%0A" +
+                        "💳 *Metode:* " + selectedPayment + "%0A" +
+                        "━━━━━━━━━━━━━━━━━━%0A%0A" +
+                        "Min, tolong segera kirim detail pembayarannya ya, saya mau langsung transfer sekarang! 🚀";
+        window.location.href = "https://api.whatsapp.com/send?phone=" + nomorAdmin + "&text=" + teksPesan;
+    }
+</script>
+</body>
+</html>
